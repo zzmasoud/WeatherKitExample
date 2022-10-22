@@ -6,9 +6,13 @@
 //
 
 import Foundation
-import MapKit
 import Combine
 
-protocol WeatherService {
-    func load(forLocation: CLLocation) -> AnyPublisher<[Weather], Never>
+public enum Location {
+    case geo(latitude: Double, longitude: Double)
+    case city(name: String)
+}
+
+public protocol WeatherService {
+    func load(forLocation: Location) -> AnyPublisher<[Weather], Never>
 }
