@@ -83,7 +83,7 @@
 		042FEC2A2903D4F40025986B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				042FEC302903D89A0025986B /* WeatherService */,
+				042FEC312903D9720025986B /* API */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +95,14 @@
 				042FEC2E2903D7160025986B /* Weather.swift */,
 			);
 			path = WeatherService;
+			sourceTree = "<group>";
+		};
+		042FEC312903D9720025986B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				042FEC302903D89A0025986B /* WeatherService */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
