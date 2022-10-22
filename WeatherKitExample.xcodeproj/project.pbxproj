@@ -13,6 +13,7 @@
 		042FEC232903D3900025986B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC222903D3900025986B /* Preview Assets.xcassets */; };
 		042FEC2D2903D5440025986B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2C2903D5440025986B /* WeatherService.swift */; };
 		042FEC2F2903D7160025986B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2E2903D7160025986B /* Weather.swift */; };
+		042FEC342903D99A0025986B /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC332903D99A0025986B /* Apple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		042FEC222903D3900025986B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		042FEC2C2903D5440025986B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		042FEC2E2903D7160025986B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		042FEC332903D99A0025986B /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +102,18 @@
 		042FEC312903D9720025986B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				042FEC322903D98A0025986B /* Providers */,
 				042FEC302903D89A0025986B /* WeatherService */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		042FEC322903D98A0025986B /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				042FEC332903D99A0025986B /* Apple.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +189,7 @@
 				042FEC2F2903D7160025986B /* Weather.swift in Sources */,
 				042FEC1E2903D38D0025986B /* ContentView.swift in Sources */,
 				042FEC2D2903D5440025986B /* WeatherService.swift in Sources */,
+				042FEC342903D99A0025986B /* Apple.swift in Sources */,
 				042FEC1C2903D38D0025986B /* WeatherKitExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
