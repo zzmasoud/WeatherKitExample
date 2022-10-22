@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import MapKit
+import Combine
+
+protocol WeatherService {
+    func load(forLocation: CLLocation) -> AnyPublisher<Any, Never>
+}
