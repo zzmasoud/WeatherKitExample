@@ -14,5 +14,5 @@ public enum Location {
 }
 
 public protocol WeatherService {
-    func load(forLocation: Location) -> AnyPublisher<[Weather], Never>
+    func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never>
 }
