@@ -83,10 +83,18 @@
 		042FEC2A2903D4F40025986B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				042FEC302903D89A0025986B /* WeatherService */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		042FEC302903D89A0025986B /* WeatherService */ = {
+			isa = PBXGroup;
+			children = (
 				042FEC2C2903D5440025986B /* WeatherService.swift */,
 				042FEC2E2903D7160025986B /* Weather.swift */,
 			);
-			path = Model;
+			path = WeatherService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
