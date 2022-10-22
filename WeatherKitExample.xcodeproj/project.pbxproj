@@ -12,6 +12,7 @@
 		042FEC202903D3900025986B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC1F2903D3900025986B /* Assets.xcassets */; };
 		042FEC232903D3900025986B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC222903D3900025986B /* Preview Assets.xcassets */; };
 		042FEC2D2903D5440025986B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2C2903D5440025986B /* WeatherService.swift */; };
+		042FEC2F2903D7160025986B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2E2903D7160025986B /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		042FEC1F2903D3900025986B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		042FEC222903D3900025986B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		042FEC2C2903D5440025986B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		042FEC2E2903D7160025986B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				042FEC2C2903D5440025986B /* WeatherService.swift */,
+				042FEC2E2903D7160025986B /* Weather.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042FEC2F2903D7160025986B /* Weather.swift in Sources */,
 				042FEC1E2903D38D0025986B /* ContentView.swift in Sources */,
 				042FEC2D2903D5440025986B /* WeatherService.swift in Sources */,
 				042FEC1C2903D38D0025986B /* WeatherKitExampleApp.swift in Sources */,

@@ -10,5 +10,5 @@ import MapKit
 import Combine
 
 protocol WeatherService {
-    func load(forLocation: CLLocation) -> AnyPublisher<Any, Never>
+    func load(forLocation: CLLocation) -> AnyPublisher<[Weather], Never>
 }
