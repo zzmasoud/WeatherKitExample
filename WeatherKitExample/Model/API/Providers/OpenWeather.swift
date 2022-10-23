@@ -10,15 +10,20 @@ import Combine
 
 class OpenWeather: WeatherService {
     static let apiKey = "05b620cf268c91d00a8a7291d39b2ecb"
-    static let apiUrl = URL(string: "https://api.openweathermap.org/data/3.0/onecall?")!
+    static let apiUrl = "https://api.openweathermap.org/data/3.0/onecall?"
     
     func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never> {
-        URLSession.shared.dataTaskPublisher(for: Self.apiUrl)
+        guard case let .geo(latitude, longitude) = forLocation else {
+            return Just([]).eraseToAnyPublisher()
+        }
+        
+        let url = URL(string: Self.apiUrl + "lat=\(latitude)&lon=\(longitude)&exclude=daily&appid=\(Self.apiKey)")!
+
+        return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .map(OpenWeatherMapper.map(_:))
+            .replaceError(with: [])
             .eraseToAnyPublisher()
-        
-        return Empty().eraseToAnyPublisher()
     }
 }
 
