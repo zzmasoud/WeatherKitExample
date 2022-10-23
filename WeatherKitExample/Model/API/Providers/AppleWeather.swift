@@ -13,22 +13,25 @@ import MapKit
 class AppleWeather: WeatherService {
     private let service = WeatherKit.WeatherService.shared
 
-    func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never> {
-        return Empty().eraseToAnyPublisher()
+    func forecast(forLocation location: Location) -> AnyPublisher<[Weather], Never> {
+        return Future {
+            await self.forecast(forLocation: location)
+        }
+        .eraseToAnyPublisher()
     }
     
-    private func forecast(forLocation location: Location) async -> AnyPublisher<[Weather], Never> {
+    private func forecast(forLocation location: Location) async -> [Weather] {
         guard let geo = map(location: location) else {
-            return Just([]).eraseToAnyPublisher()
+            return []
         }
         
         do {
             let result = try await service.weather(for: geo)
             let weathers = result.dailyForecast.map({$0.mapToWeather()})
-            return Just(weathers).eraseToAnyPublisher()
+            return weathers
             
         } catch {
-            return Empty().eraseToAnyPublisher()
+            return []
         }
     }
 }
@@ -54,15 +57,13 @@ extension DayWeather {
     }
 }
 
-fileprivate extension Future where Failure == Error {
+extension Future where Failure == Never {
     convenience init(operation: @escaping () async throws -> Output) {
         self.init { promise in
             Task {
                 do {
                     let output = try await operation()
                     promise(.success(output))
-                } catch {
-                    promise(.failure(error))
                 }
             }
         }
