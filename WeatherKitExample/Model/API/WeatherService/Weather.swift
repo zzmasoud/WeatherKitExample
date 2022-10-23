@@ -16,3 +16,5 @@ public struct Weather {
     let label: String?
     let date: Date
 }
+
+extension Weather: Equatable {}
