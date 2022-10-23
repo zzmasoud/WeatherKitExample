@@ -8,9 +8,10 @@
 import Foundation
 
 public struct Weather {
-    let temprature: Measurement<UnitTemperature>
-    let maxTemprature: Measurement<UnitTemperature>
-    let minTemprature: Measurement<UnitTemperature>
+    typealias Unit = Measurement<UnitTemperature>
+    let temprature: Unit
+    let maxTemprature: Unit
+    let minTemprature: Unit
     let humidity: Float
     let label: String?
     let date: Date
