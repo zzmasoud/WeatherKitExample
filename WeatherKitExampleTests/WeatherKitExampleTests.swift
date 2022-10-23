@@ -27,6 +27,22 @@ final class WeatherKitExampleTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
+    func test_forecastByGeo_deliversNonEmpty() {
+        let sut = AppleWeather()
+        // Berlin
+        let location = (lat: 52.5200 , long: 13.4050)
+        
+        let exp = expectation(description: "waiting...")
+        sut.forecast(forLocation: .geo(latitude: location.lat, longitude: location.long))
+            .sink(receiveValue: { forecasts in
+                XCTAssert(forecasts.count > 0)
+                exp.fulfill()
+            })
+            .store(in: &subscriptions)
+        
+        wait(for: [exp], timeout: 5)
+    }
+    
     override func tearDown() {
         super.tearDown()
         subscriptions = []
