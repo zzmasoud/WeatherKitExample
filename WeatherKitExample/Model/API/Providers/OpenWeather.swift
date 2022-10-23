@@ -25,6 +25,30 @@ class OpenWeather: WeatherService {
 private class OpenWeatherMapper {
     private init() {}
     
+    private struct Root: Decodable {
+        let daily: [_Weather]
+    }
+    
+    private struct _Weather: Decodable {
+        let dt: Double
+        let humidity: Float
+        let temp: Temprature
+        let overall: Overall
+    }
+    
+    private struct Temprature: Decodable {
+        let day: Double
+        let min: Double
+        let max: Double
+        let night: Double
+        let eve: Double
+        let morn: Double
+    }
+    
+    private struct Overall: Decodable {
+        let main: String
+    }
+    
     static func map(_ data: Data) -> [Weather] {
         guard let root = try? JSONDecoder().decode(Root.self, from: data)
         else { return [] }
