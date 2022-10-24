@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042A05622906F62600739D70 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A05612906F62600739D70 /* Secrets.swift */; };
 		042FEC1C2903D38D0025986B /* WeatherKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC1B2903D38D0025986B /* WeatherKitExampleApp.swift */; };
 		042FEC1E2903D38D0025986B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC1D2903D38D0025986B /* ContentView.swift */; };
 		042FEC202903D3900025986B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC1F2903D3900025986B /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042A05612906F62600739D70 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		042FEC182903D38D0025986B /* WeatherKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042FEC1B2903D38D0025986B /* WeatherKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitExampleApp.swift; sourceTree = "<group>"; };
 		042FEC1D2903D38D0025986B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				042FEC322903D98A0025986B /* Providers */,
 				042FEC302903D89A0025986B /* WeatherService */,
+				042A05612906F62600739D70 /* Secrets.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				04A877D329059D2C001B8E76 /* OpenWeather.swift in Sources */,
 				042FEC2F2903D7160025986B /* Weather.swift in Sources */,
+				042A05622906F62600739D70 /* Secrets.swift in Sources */,
 				042FEC1E2903D38D0025986B /* ContentView.swift in Sources */,
 				042FEC2D2903D5440025986B /* WeatherService.swift in Sources */,
 				042FEC342903D99A0025986B /* AppleWeather.swift in Sources */,
