@@ -9,18 +9,45 @@ import Foundation
 import Combine
 
 class OpenWeather: WeatherService {
-    
-    #warning("Replace your API key here...")
-    static let apiKey = Secrets.apiKey
-    static let apiUrl = "https://api.openweathermap.org/data/3.0/onecall?"
-    
+    private struct API {
+        private init() {}
+        
+        static let scheme = "https"
+        static let host = "api.openweathermap.org"
+        static let path = "/data/2.5"
+        #warning("Replace your API key here...")
+        private static let key = Secrets.apiKey
+        
+        static func makeForecastURL(lat: Double, lon: Double) -> URL? {
+            let lat = String(format: "%.3f", lat)
+            let lon = String(format: "%.3f", lon)
+
+            var components = URLComponents()
+            components.scheme = API.scheme
+            components.host = API.host
+            components.path = API.path + "/forecast"
+
+            components.queryItems = [
+              URLQueryItem(name: "lat", value: lat),
+              URLQueryItem(name: "lon", value: lon),
+              URLQueryItem(name: "mode", value: "json"),
+              URLQueryItem(name: "units", value: "metric"),
+              URLQueryItem(name: "appid", value: API.key)
+            ]
+
+            return components.url
+        }
+    }
+        
     func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never> {
         guard case let .geo(latitude, longitude) = forLocation else {
             return Just([]).eraseToAnyPublisher()
         }
         
-        let url = URL(string: Self.apiUrl + "lat=\(latitude)&lon=\(longitude)&exclude=daily&appid=\(Self.apiKey)")!
-
+        guard var url = API.makeForecastURL(lat: latitude, lon: longitude) else {
+            return Just([]).eraseToAnyPublisher()
+        }
+        
         return URLSession.shared.dataTaskPublisher(for: url)
             .print("OPENWEATHER")
             .map(\.data)
