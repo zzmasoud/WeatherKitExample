@@ -22,6 +22,7 @@ class OpenWeather: WeatherService {
         let url = URL(string: Self.apiUrl + "lat=\(latitude)&lon=\(longitude)&exclude=daily&appid=\(Self.apiKey)")!
 
         return URLSession.shared.dataTaskPublisher(for: url)
+            .print("OPENWEATHER")
             .map(\.data)
             .map(OpenWeatherMapper.map(_:))
             .replaceError(with: [])

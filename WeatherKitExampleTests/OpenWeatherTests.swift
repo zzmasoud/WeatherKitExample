@@ -1,19 +1,19 @@
 //
-//  WeatherKitExampleTests.swift
+//  OpenWeatherTests.swift
 //  WeatherKitExampleTests
 //
-//  Created by Masoud Sheikh Hosseini on 10/22/22.
+//  Created by Masoud Sheikh Hosseini on 10/24/22.
 //
 
 import XCTest
 import Combine
 
-final class WeatherKitExampleTests: XCTestCase {
-    
+final class OpenWeatherTests: XCTestCase {
+
     var subscriptions = [AnyCancellable]()
     
     func test_forecastByCityName_deliversEmpty() {
-        let sut = AppleWeather()
+        let sut = OpenWeather()
         let cityName = "Berlin"
         
         let exp = expectation(description: "waiting...")
@@ -28,7 +28,7 @@ final class WeatherKitExampleTests: XCTestCase {
     }
     
     func test_forecastByGeo_deliversNonEmpty() {
-        let sut = AppleWeather()
+        let sut = OpenWeather()
         // Berlin
         let location = (lat: 52.5200 , long: 13.4050)
         
@@ -42,7 +42,7 @@ final class WeatherKitExampleTests: XCTestCase {
         
         wait(for: [exp], timeout: 5)
     }
-    
+
     override func tearDown() {
         super.tearDown()
         subscriptions = []
