@@ -42,7 +42,12 @@ private class OpenWeatherMapper {
     private struct _Weather: Decodable {
         let dt: Double
         let main: Main
-        let humanReadable: HumanReadable
+        let humanReadable: [HumanReadable]
+        
+        enum CodingKeys: String, CodingKey {
+            case dt, main
+            case humanReadable = "weather"
+        }
     }
     
     private struct Main: Decodable {
@@ -71,11 +76,15 @@ private class OpenWeatherMapper {
     }
     
     static func map(_ data: Data) -> [Weather] {
-        guard let root = try? JSONDecoder().decode(Root.self, from: data)
-        else { return [] }
         
-        let weathers = root.list
-        return weathers.map({map($0)})
+        do {
+            let root = try JSONDecoder().decode(Root.self, from: data)
+            let weathers = root.list
+            return weathers.map({map($0)})
+        } catch {
+            print(error)
+            return []
+        }
     }
     
     private static func map(_ weather: _Weather) -> Weather {
@@ -84,7 +93,7 @@ private class OpenWeatherMapper {
             maxTemprature: weather.main.tempMax.toMeasurement,
             minTemprature: weather.main.tempMin.toMeasurement,
             humidity: weather.main.humidity,
-            label: weather.humanReadable.main,
+            label: weather.humanReadable[0].main,
             date: Date(timeIntervalSince1970: weather.dt)
         )
     }
