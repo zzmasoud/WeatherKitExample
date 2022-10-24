@@ -9,7 +9,9 @@ import Foundation
 import Combine
 
 class OpenWeather: WeatherService {
-    static let apiKey = "05b620cf268c91d00a8a7291d39b2ecb"
+    
+    #warning("Replace your API key here...")
+    static let apiKey = Secrets.apiKey
     static let apiUrl = "https://api.openweathermap.org/data/3.0/onecall?"
     
     func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never> {
