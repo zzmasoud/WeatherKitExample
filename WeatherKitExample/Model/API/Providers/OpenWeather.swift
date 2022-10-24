@@ -34,7 +34,9 @@ private class OpenWeatherMapper {
     private init() {}
     
     private struct Root: Decodable {
-        let daily: [_Weather]
+        let cod: String
+        let message: Int
+        let list: [_Weather]
     }
     
     private struct _Weather: Decodable {
@@ -61,7 +63,7 @@ private class OpenWeatherMapper {
         guard let root = try? JSONDecoder().decode(Root.self, from: data)
         else { return [] }
         
-        let weathers = root.daily
+        let weathers = root.list
         return weathers.map({map($0)})
     }
     
