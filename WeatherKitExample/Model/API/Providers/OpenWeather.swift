@@ -41,22 +41,33 @@ private class OpenWeatherMapper {
     
     private struct _Weather: Decodable {
         let dt: Double
+        let main: Main
+        let humanReadable: HumanReadable
+    }
+    
+    private struct Main: Decodable {
+        let temp, tempMin, tempMax: Double
+        let pressure: Int
         let humidity: Float
-        let temp: Temprature
-        let overall: Overall
+
+        enum CodingKeys: String, CodingKey {
+            case temp
+            case tempMin = "temp_min"
+            case tempMax = "temp_max"
+            case pressure
+            case humidity
+        }
     }
     
-    private struct Temprature: Decodable {
-        let day: Double
-        let min: Double
-        let max: Double
-        let night: Double
-        let eve: Double
-        let morn: Double
-    }
-    
-    private struct Overall: Decodable {
-        let main: String
+    private struct HumanReadable: Decodable {
+        let id: Int
+        let main, weatherDescription, icon: String
+
+        enum CodingKeys: String, CodingKey {
+            case id, main
+            case weatherDescription = "description"
+            case icon
+        }
     }
     
     static func map(_ data: Data) -> [Weather] {
@@ -69,11 +80,11 @@ private class OpenWeatherMapper {
     
     private static func map(_ weather: _Weather) -> Weather {
         return Weather(
-            temprature: weather.temp.day.toMeasurement,
-            maxTemprature: weather.temp.max.toMeasurement,
-            minTemprature: weather.temp.min.toMeasurement,
-            humidity: weather.humidity,
-            label: weather.overall.main,
+            temprature: weather.main.temp.toMeasurement,
+            maxTemprature: weather.main.tempMax.toMeasurement,
+            minTemprature: weather.main.tempMin.toMeasurement,
+            humidity: weather.main.humidity,
+            label: weather.humanReadable.main,
             date: Date(timeIntervalSince1970: weather.dt)
         )
     }
