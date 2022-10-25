@@ -22,6 +22,7 @@
 		042FEC422903E1B20025986B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2C2903D5440025986B /* WeatherService.swift */; };
 		042FEC432903E1B20025986B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2E2903D7160025986B /* Weather.swift */; };
 		042FEC442903E1B50025986B /* AppleWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC332903D99A0025986B /* AppleWeather.swift */; };
+		046B8CF32907CE20003D470C /* WeeklyWeatherVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B8CF22907CE20003D470C /* WeeklyWeatherVM.swift */; };
 		04A877D329059D2C001B8E76 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A877D229059D2C001B8E76 /* OpenWeather.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		042FEC332903D99A0025986B /* AppleWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleWeather.swift; sourceTree = "<group>"; };
 		042FEC392903E1AA0025986B /* WeatherKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		042FEC3B2903E1AA0025986B /* WeatherKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitExampleTests.swift; sourceTree = "<group>"; };
+		046B8CF22907CE20003D470C /* WeeklyWeatherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherVM.swift; sourceTree = "<group>"; };
 		04A877D229059D2C001B8E76 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 		042FEC2A2903D4F40025986B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				046B8CF12907CE00003D470C /* ViewModel */,
 				042FEC312903D9720025986B /* API */,
 			);
 			path = Model;
@@ -158,6 +161,14 @@
 				042A05632906F99500739D70 /* OpenWeatherTests.swift */,
 			);
 			path = WeatherKitExampleTests;
+			sourceTree = "<group>";
+		};
+		046B8CF12907CE00003D470C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B8CF22907CE20003D470C /* WeeklyWeatherVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				042FEC2F2903D7160025986B /* Weather.swift in Sources */,
 				042A05622906F62600739D70 /* Secrets.swift in Sources */,
 				042FEC1E2903D38D0025986B /* ContentView.swift in Sources */,
+				046B8CF32907CE20003D470C /* WeeklyWeatherVM.swift in Sources */,
 				042FEC2D2903D5440025986B /* WeatherService.swift in Sources */,
 				042FEC342903D99A0025986B /* AppleWeather.swift in Sources */,
 				042FEC1C2903D38D0025986B /* WeatherKitExampleApp.swift in Sources */,
