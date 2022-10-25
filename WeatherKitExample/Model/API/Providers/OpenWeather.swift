@@ -44,14 +44,15 @@ class OpenWeather: WeatherService {
             return Just([]).eraseToAnyPublisher()
         }
         
-        guard var url = API.makeForecastURL(lat: latitude, lon: longitude) else {
+        guard let url = API.makeForecastURL(lat: latitude, lon: longitude) else {
             return Just([]).eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .print("OPENWEATHER")
-            .map(\.data)
-            .map(OpenWeatherMapper.map(_:))
+            .flatMap(maxPublishers: .max(1)) { result in
+                OpenWeatherMapper.decode(result.data)
+            }
             .replaceError(with: [])
             .eraseToAnyPublisher()
     }
@@ -66,7 +67,7 @@ private class OpenWeatherMapper {
         let list: [_Weather]
     }
     
-    private struct _Weather: Decodable {
+    struct _Weather: Decodable {
         let dt: Double
         let main: Main
         let humanReadable: [HumanReadable]
@@ -77,7 +78,7 @@ private class OpenWeatherMapper {
         }
     }
     
-    private struct Main: Decodable {
+    struct Main: Decodable {
         let temp, tempMin, tempMax: Double
         let pressure: Int
         let humidity: Float
@@ -91,7 +92,7 @@ private class OpenWeatherMapper {
         }
     }
     
-    private struct HumanReadable: Decodable {
+    struct HumanReadable: Decodable {
         let id: Int
         let main, weatherDescription, icon: String
 
@@ -102,8 +103,18 @@ private class OpenWeatherMapper {
         }
     }
     
-    static func map(_ data: Data) -> [Weather] {
+    static func decode(_ data: Data) -> AnyPublisher<[Weather], Never> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
         
+        return Just(data)
+            .decode(type: Root.self, decoder: decoder)
+            .map({$0.list.toWeathers()})
+            .assertNoFailure()
+            .eraseToAnyPublisher()
+    }
+    
+    static func map(_ data: Data) -> [Weather] {
         do {
             let root = try JSONDecoder().decode(Root.self, from: data)
             let weathers = root.list
@@ -125,6 +136,22 @@ private class OpenWeatherMapper {
         )
     }
 }
+
+private extension Array where Element == OpenWeatherMapper._Weather {
+    func toWeathers() -> [Weather] {
+        return map { weather in
+            return Weather(
+                temprature: weather.main.temp.toMeasurement,
+                maxTemprature: weather.main.tempMax.toMeasurement,
+                minTemprature: weather.main.tempMin.toMeasurement,
+                humidity: weather.main.humidity,
+                label: weather.humanReadable[0].main,
+                date: Date(timeIntervalSince1970: weather.dt)
+            )
+        }
+    }
+}
+
 
 fileprivate extension Double {
     var toMeasurement: Measurement<UnitTemperature> {
