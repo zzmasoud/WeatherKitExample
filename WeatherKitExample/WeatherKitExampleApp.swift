@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct WeatherKitExampleApp: App {
+    
+    let service: WeatherService = OpenWeather()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WeaklyWeatherView(viewModel: WeeklyWeatherVM(service: service))
         }
     }
 }

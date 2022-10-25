@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class WeaklyWeatherVM {
+class WeeklyWeatherVM: ObservableObject {
     
     @Published var city: String = ""
     @Published var forecasts: [Weather] = []
