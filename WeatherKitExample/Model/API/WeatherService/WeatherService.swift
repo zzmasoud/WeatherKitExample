@@ -20,5 +20,5 @@ public enum WeatherServiceError: Error {
 }
 
 public protocol WeatherService {
-    func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never>
+    func forecast(forLocation: Location) -> AnyPublisher<[Weather], WeatherServiceError>
 }
