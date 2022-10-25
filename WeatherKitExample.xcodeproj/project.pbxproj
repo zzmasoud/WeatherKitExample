@@ -12,7 +12,7 @@
 		042A05652906FD6100739D70 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A877D229059D2C001B8E76 /* OpenWeather.swift */; };
 		042A05662906FDC800739D70 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A05612906F62600739D70 /* Secrets.swift */; };
 		042FEC1C2903D38D0025986B /* WeatherKitExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC1B2903D38D0025986B /* WeatherKitExampleApp.swift */; };
-		042FEC1E2903D38D0025986B /* WeaklyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC1D2903D38D0025986B /* WeaklyWeatherView.swift */; };
+		042FEC1E2903D38D0025986B /* WeeklyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC1D2903D38D0025986B /* WeeklyWeatherView.swift */; };
 		042FEC202903D3900025986B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC1F2903D3900025986B /* Assets.xcassets */; };
 		042FEC232903D3900025986B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FEC222903D3900025986B /* Preview Assets.xcassets */; };
 		042FEC2D2903D5440025986B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042FEC2C2903D5440025986B /* WeatherService.swift */; };
@@ -41,7 +41,7 @@
 		042A05632906F99500739D70 /* OpenWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherTests.swift; sourceTree = "<group>"; };
 		042FEC182903D38D0025986B /* WeatherKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042FEC1B2903D38D0025986B /* WeatherKitExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitExampleApp.swift; sourceTree = "<group>"; };
-		042FEC1D2903D38D0025986B /* WeaklyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaklyWeatherView.swift; sourceTree = "<group>"; };
+		042FEC1D2903D38D0025986B /* WeeklyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherView.swift; sourceTree = "<group>"; };
 		042FEC1F2903D3900025986B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		042FEC222903D3900025986B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		042FEC2C2903D5440025986B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		042FEC292903D4EE0025986B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				042FEC1D2903D38D0025986B /* WeaklyWeatherView.swift */,
+				042FEC1D2903D38D0025986B /* WeeklyWeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 				04A877D329059D2C001B8E76 /* OpenWeather.swift in Sources */,
 				042FEC2F2903D7160025986B /* Weather.swift in Sources */,
 				042A05622906F62600739D70 /* Secrets.swift in Sources */,
-				042FEC1E2903D38D0025986B /* WeaklyWeatherView.swift in Sources */,
+				042FEC1E2903D38D0025986B /* WeeklyWeatherView.swift in Sources */,
 				046B8CF32907CE20003D470C /* WeeklyWeatherVM.swift in Sources */,
 				042FEC2D2903D5440025986B /* WeatherService.swift in Sources */,
 				042FEC342903D99A0025986B /* AppleWeather.swift in Sources */,
