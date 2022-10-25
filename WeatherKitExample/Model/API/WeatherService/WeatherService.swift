@@ -13,6 +13,12 @@ public enum Location {
     case city(name: String)
 }
 
+public enum WeatherServiceError: Error {
+    case network
+    case parsing
+    case notSupported
+}
+
 public protocol WeatherService {
     func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never>
 }
