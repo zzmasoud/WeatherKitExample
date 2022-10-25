@@ -29,7 +29,6 @@ class AppleWeather: WeatherService {
             let result = try await service.weather(for: geo)
             let weathers = result.dailyForecast.map({$0.mapToWeather()})
             return weathers
-            
         } catch {
             throw WeatherServiceError.network
         }

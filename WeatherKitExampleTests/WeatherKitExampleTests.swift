@@ -18,9 +18,10 @@ final class WeatherKitExampleTests: XCTestCase {
         
         let exp = expectation(description: "waiting...")
         sut.forecast(forLocation: .city(name: cityName))
-            .sink(receiveValue: { forecasts in
-                XCTAssertEqual(forecasts, [])
+            .sink(receiveCompletion: { completion in
                 exp.fulfill()
+            }, receiveValue: { forecasts in
+                XCTAssertEqual(forecasts, [])
             })
             .store(in: &subscriptions)
         
@@ -31,15 +32,16 @@ final class WeatherKitExampleTests: XCTestCase {
         let sut = AppleWeather()
         // Berlin
         let location = (lat: 52.5200 , long: 13.4050)
-        
+
         let exp = expectation(description: "waiting...")
         sut.forecast(forLocation: .geo(latitude: location.lat, longitude: location.long))
-            .sink(receiveValue: { forecasts in
-                XCTAssert(forecasts.count > 0)
+            .sink(receiveCompletion: { completion in
                 exp.fulfill()
+            }, receiveValue: { forecasts in
+                XCTAssert(forecasts.count > 0)
             })
             .store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 5)
     }
     
