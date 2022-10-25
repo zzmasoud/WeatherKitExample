@@ -18,12 +18,13 @@ final class OpenWeatherTests: XCTestCase {
         
         let exp = expectation(description: "waiting...")
         sut.forecast(forLocation: .city(name: cityName))
-            .sink(receiveValue: { forecasts in
-                XCTAssertEqual(forecasts, [])
+            .sink(receiveCompletion: { completion in
                 exp.fulfill()
+            }, receiveValue: { forecasts in
+                XCTAssertEqual(forecasts, [])
             })
             .store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 1)
     }
     
@@ -34,12 +35,13 @@ final class OpenWeatherTests: XCTestCase {
         
         let exp = expectation(description: "waiting...")
         sut.forecast(forLocation: .geo(latitude: location.lat, longitude: location.long))
-            .sink(receiveValue: { forecasts in
-                XCTAssert(forecasts.count > 0)
+            .sink(receiveCompletion: { completion in
                 exp.fulfill()
+            }, receiveValue: { forecasts in
+                XCTAssert(forecasts.count > 0)
             })
             .store(in: &subscriptions)
-        
+
         wait(for: [exp], timeout: 5)
     }
 

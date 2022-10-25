@@ -39,13 +39,15 @@ class OpenWeather: WeatherService {
         }
     }
         
-    func forecast(forLocation: Location) -> AnyPublisher<[Weather], Never> {
+    func forecast(forLocation: Location) -> AnyPublisher<[Weather], WeatherServiceError> {
         guard case let .geo(latitude, longitude) = forLocation else {
-            return Just([]).eraseToAnyPublisher()
+            return Fail(error: WeatherServiceError.notSupported)
+                .eraseToAnyPublisher()
         }
         
         guard let url = API.makeForecastURL(lat: latitude, lon: longitude) else {
-            return Just([]).eraseToAnyPublisher()
+            return Fail(error: WeatherServiceError.network)
+                .eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
@@ -53,7 +55,9 @@ class OpenWeather: WeatherService {
             .flatMap(maxPublishers: .max(1)) { result in
                 OpenWeatherMapper.decode(result.data)
             }
-            .replaceError(with: [])
+            .mapError({ error in
+                    .parsing
+            })
             .eraseToAnyPublisher()
     }
 }
