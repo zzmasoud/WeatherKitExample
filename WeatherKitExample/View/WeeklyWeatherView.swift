@@ -15,6 +15,17 @@ struct WeeklyWeatherView: View {
     }
 
     var body: some View {
-        Text("Hello World")
+        searchField
+        Text("RESULTS:")
+        Text(viewModel.city)
+        Text(viewModel.forecasts.map({$0.label!}).joined(separator: "\n"))
+    }
+}
+
+private extension WeeklyWeatherView {
+    var searchField: some View {
+      HStack(alignment: .center) {
+        TextField("e.g. London", text: $viewModel.city)
+      }
     }
 }

@@ -14,7 +14,7 @@ struct WeatherKitExampleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WeaklyWeatherView(viewModel: WeeklyWeatherVM(service: service))
+            WeeklyWeatherView(viewModel: WeeklyWeatherVM(service: service))
         }
     }
 }

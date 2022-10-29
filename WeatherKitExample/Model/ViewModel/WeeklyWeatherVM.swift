@@ -16,8 +16,18 @@ class WeeklyWeatherVM: ObservableObject {
     private let service: WeatherService
     private var subscriptions = [AnyCancellable]()
     
-    init(service: WeatherService) {
+    init(service: WeatherService, scheduler: DispatchQueue = DispatchQueue(label: "WeeklyWeatherVM")) {
         self.service = service
+        $city
+       // to skip empty string ("")
+            .dropFirst()
+            .filter({$0.count > 3})
+        // to prevent HTTP request for every single new character, instead wait for 1 second after user stopped typing
+            .debounce(for: 1, scheduler: scheduler)
+            .sink(receiveValue: { text in
+                self.fetchWeather(forLocation: .city(name: text))
+            })
+            .store(in: &subscriptions)
     }
     
     func fetchWeather(forLocation location: Location) {
@@ -30,7 +40,7 @@ class WeeklyWeatherVM: ObservableObject {
                 switch completion {
                 case .finished:
                     break
-                case .failure(_):
+                case .failure(let error):
                     self.forecasts = []
                 }
                 

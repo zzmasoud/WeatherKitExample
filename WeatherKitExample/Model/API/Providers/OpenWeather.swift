@@ -12,7 +12,7 @@ class OpenWeather: WeatherService {
     private struct API {
         private init() {}
         
-        static let scheme = "https"
+        static let scheme = "http"
         static let host = "api.openweathermap.org"
         static let path = "/data/2.5"
         #warning("Replace your API key here...")
