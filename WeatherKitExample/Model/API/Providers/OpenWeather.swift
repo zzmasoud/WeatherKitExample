@@ -34,18 +34,36 @@ class OpenWeather: WeatherService {
               URLQueryItem(name: "units", value: "metric"),
               URLQueryItem(name: "appid", value: API.key)
             ]
+            return components.url
+        }
+        
+        static func makeForecastURL(city: String) -> URL? {
+            var components = URLComponents()
+            components.scheme = API.scheme
+            components.host = API.host
+            components.path = API.path + "/forecast"
 
+            components.queryItems = [
+              URLQueryItem(name: "q", value: city),
+              URLQueryItem(name: "mode", value: "json"),
+              URLQueryItem(name: "units", value: "metric"),
+              URLQueryItem(name: "appid", value: API.key)
+            ]
             return components.url
         }
     }
         
-    func forecast(forLocation: Location) -> AnyPublisher<[Weather], WeatherServiceError> {
-        guard case let .geo(latitude, longitude) = forLocation else {
-            return Fail(error: WeatherServiceError.notSupported)
-                .eraseToAnyPublisher()
-        }
+    func forecast(forLocation location: Location) -> AnyPublisher<[Weather], WeatherServiceError> {
+        var url: URL?
         
-        guard let url = API.makeForecastURL(lat: latitude, lon: longitude) else {
+        switch location {
+        case .geo(latitude: let latitude, longitude: let longitude):
+            url = API.makeForecastURL(lat: latitude, lon: longitude)
+        case .city(name: let name):
+            url = API.makeForecastURL(city: name)
+        }
+
+        guard let url = url else {
             return Fail(error: WeatherServiceError.network)
                 .eraseToAnyPublisher()
         }
