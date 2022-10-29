@@ -51,6 +51,7 @@
 		042FEC3B2903E1AA0025986B /* WeatherKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitExampleTests.swift; sourceTree = "<group>"; };
 		046B8CF22907CE20003D470C /* WeeklyWeatherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeatherVM.swift; sourceTree = "<group>"; };
 		04A877D229059D2C001B8E76 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
+		04AB45A6290D62E200272FFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 		042FEC1A2903D38D0025986B /* WeatherKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				04AB45A6290D62E200272FFA /* Info.plist */,
 				042FEC2A2903D4F40025986B /* Model */,
 				042FEC292903D4EE0025986B /* View */,
 				042FEC1B2903D38D0025986B /* WeatherKitExampleApp.swift */,
@@ -432,6 +434,7 @@
 				DEVELOPMENT_TEAM = D5XG7478BB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,6 +464,7 @@
 				DEVELOPMENT_TEAM = D5XG7478BB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
