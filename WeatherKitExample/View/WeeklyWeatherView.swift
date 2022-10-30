@@ -18,7 +18,9 @@ struct WeeklyWeatherView: View {
         searchField
         Text("RESULTS:")
         Text(viewModel.city)
-        Text(viewModel.forecasts.map({$0.label!}).joined(separator: "\n"))
+        Section {
+            ForEach(viewModel.forecasts, content: { _ in DailyWeatherRow() })
+        }
     }
 }
 
