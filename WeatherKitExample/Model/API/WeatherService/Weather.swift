@@ -18,3 +18,10 @@ public struct Weather {
 }
 
 extension Weather: Equatable {}
+extension Weather: Identifiable {
+    public typealias ID = Date
+    
+    public var id: Date {
+        return self.date
+    }
+}
