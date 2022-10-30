@@ -12,7 +12,7 @@ class DailyWeatherRowVM {
     
     private static let dayFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "DD"
+        formatter.dateFormat = "dd"
         return formatter
     }()
     
