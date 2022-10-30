@@ -26,6 +26,8 @@ struct DailyWeatherRow: View {
                 Text(viewModel.title)
             }
             
+            Spacer()
+            
             HStack {
                 Text(viewModel.temperature)
             }
