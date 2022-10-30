@@ -45,7 +45,7 @@ private extension WeeklyWeatherView {
     
     var forecastsView: some View {
         Section {
-            ForEach(viewModel.forecasts, content: { _ in DailyWeatherRow() })
+            ForEach(viewModel.forecasts, content: { item in DailyWeatherRow(viewModel: DailyWeatherRowVM(weather: item)) })
         }
     }
     
